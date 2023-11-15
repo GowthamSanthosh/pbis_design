@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:third_page/changenotifier.dart';
 import 'package:third_page/second.dart';
 
-
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
 
@@ -12,6 +11,14 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  String buttonTextSize = 'Medium';
+
+  // Added: Map of text sizes
+  final textSizes = {
+    'Small': 10.0,
+    'Medium': 13.0,
+    'Large': 16.0,
+  };
   late ThemeProvider themeProvider;
 
   @override
@@ -38,10 +45,10 @@ class _MyHomeState extends State<MyHome> {
             height: 40.0, // Height of the image
           ),
         ),
-        title: const Text(
+        title: Text(
           'NAVI GO',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: textSizes[buttonTextSize],
             fontWeight: FontWeight.w700,
             color: Color(0xFF000000),
           ),
@@ -52,7 +59,7 @@ class _MyHomeState extends State<MyHome> {
         backgroundColor: const Color(0xFFEFF3FF),
         child: Column(
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(8.0),
               child: Row(children: [
                 SizedBox(
@@ -73,9 +80,10 @@ class _MyHomeState extends State<MyHome> {
                         child: Text(
                           "Sanjeevi",
                           style: TextStyle(
-                              color: Color(0xFF8B48DF),
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14),
+                            color: Color(0xFF8B48DF),
+                            fontWeight: FontWeight.w700,
+                            fontSize: textSizes[buttonTextSize],
+                          ),
                         ),
                       ),
                       Padding(
@@ -83,9 +91,10 @@ class _MyHomeState extends State<MyHome> {
                         child: Text(
                           "sanjeevi@gmail.com",
                           style: TextStyle(
-                              color: Color(0xFF8B48DF),
-                              fontWeight: FontWeight.w700,
-                              fontSize: 10),
+                            color: Color(0xFF8B48DF),
+                            fontWeight: FontWeight.w700,
+                            fontSize: textSizes[buttonTextSize],
+                          ),
                         ),
                       ),
                     ],
@@ -108,12 +117,13 @@ class _MyHomeState extends State<MyHome> {
                         height: 40.0, // Height of the image
                       ),
                     ),
-                    title: const Text(
+                    title: Text(
                       "Instruction",
                       style: TextStyle(
-                          color: Color(0xFF8B48DF),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18),
+                        color: Color(0xFF8B48DF),
+                        fontWeight: FontWeight.w700,
+                        fontSize: textSizes[buttonTextSize],
+                      ),
                     ),
                   ),
                   ListTile(
@@ -127,18 +137,19 @@ class _MyHomeState extends State<MyHome> {
                         height: 40.0, // Height of the image
                       ),
                     ),
-                    title: const Text(
+                    title: Text(
                       "Update",
                       style: TextStyle(
-                          color: Color(0xFF8B48DF),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18),
+                        color: Color(0xFF8B48DF),
+                        fontWeight: FontWeight.w700,
+                        fontSize: textSizes[buttonTextSize],
+                      ),
                     ),
                   ),
                   ListTile(
                     leading: Container(
                       // Use a container for customization
-                      padding: const EdgeInsets.all(0), // Padding for the image
+                      padding: EdgeInsets.all(0), // Padding for the image
                       child: Image.asset(
                         'assets/version.jpg',
                         // Replace with the path to your asset image
@@ -146,18 +157,19 @@ class _MyHomeState extends State<MyHome> {
                         height: 40.0, // Height of the image
                       ),
                     ),
-                    title: const Text(
+                    title: Text(
                       "Version",
                       style: TextStyle(
-                          color: Color(0xFF8B48DF),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18),
+                        color: Color(0xFF8B48DF),
+                        fontWeight: FontWeight.w700,
+                        fontSize: textSizes[buttonTextSize],
+                      ),
                     ),
                   ),
                   ListTile(
                     leading: Container(
                       // Use a container for customization
-                      padding: const EdgeInsets.all(0), // Padding for the image
+                      padding: EdgeInsets.all(0), // Padding for the image
                       child: Image.asset(
                         'assets/settings.jpg',
                         // Replace with the path to your asset image
@@ -165,33 +177,74 @@ class _MyHomeState extends State<MyHome> {
                         height: 40.0, // Height of the image
                       ),
                     ),
-                    title: const Text(
+                    title: Text(
                       "Settings",
                       style: TextStyle(
-                          color: Color(0xFF8B48DF),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18),
+                        color: Color(0xFF8B48DF),
+                        fontWeight: FontWeight.w700,
+                        fontSize: textSizes[buttonTextSize],
+                      ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(2.0),
                     child: ListTile(
-                      leading:  Icon(   Icons.brightness_medium,color: Color(0xFF8B48DF),),
-                      title:  Text('Dark Mode',style: TextStyle(
-    color: Color(0xFF8B48DF),
-    fontWeight: FontWeight.w700,
-    fontSize: 18),
-    ),
+                      leading: Icon(
+                        Icons.brightness_medium,
+                        color: Color(0xFF8B48DF),
+                      ),
+                      title: Text(
+                        'Dark Mode',
+                        style: TextStyle(
+                          color: Color(0xFF8B48DF),
+                          fontWeight: FontWeight.w700,
+                          fontSize: textSizes[buttonTextSize],
+                        ),
+                      ),
                       trailing: Switch(
-                        value: themeProvider.themeModeType == ThemeModeType.dark,
+                        value:
+                            themeProvider.themeModeType == ThemeModeType.dark,
                         onChanged: (value) {
                           themeProvider.toggleTheme();
                         },
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.text_fields,
+                        color: Color(0xFF8B48DF),
+                      ),
+                      title: Text(
+                        'Text Size',
+                        style: TextStyle(
+                          color: Color(0xFF8B48DF),
+                          fontWeight: FontWeight.w700,
+                          fontSize: textSizes[buttonTextSize],
+                        ),
+                      ),
+                      trailing:        DropdownButton<String>(
+                        value: buttonTextSize,
+                        items: textSizes.keys
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newSize) {
+                          setState(() {
+                            buttonTextSize = newSize ?? 'Medium';
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+
                   const SizedBox(
-                    height: 150,
+                    height: 100,
                   ),
                   const Divider(
                     indent: 50,
@@ -211,16 +264,15 @@ class _MyHomeState extends State<MyHome> {
                         height: 40.0, // Height of the image
                       ),
                     ),
-                    title: const Text(
+                    title: Text(
                       "Log Out",
                       style: TextStyle(
-                          color: Color(0xFF8B48DF),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14),
+                        color: Color(0xFF8B48DF),
+                        fontWeight: FontWeight.w700,
+                        fontSize: textSizes[buttonTextSize],
+                      ),
                     ),
                   ),
-
-
                   ListTile(
                     leading: Container(
                       // Use a container for customization
@@ -232,12 +284,13 @@ class _MyHomeState extends State<MyHome> {
                         height: 40.0, // Height of the image
                       ),
                     ),
-                    title: const Text(
+                    title: Text(
                       "Contact Support",
                       style: TextStyle(
-                          color: Color(0xFF8B48DF),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14),
+                        color: Color(0xFF8B48DF),
+                        fontWeight: FontWeight.w700,
+                        fontSize: textSizes[buttonTextSize],
+                      ),
                     ),
                   ),
                 ],
@@ -274,16 +327,21 @@ class _MyHomeState extends State<MyHome> {
                           child: Image.asset('assets/Dashboard.jpg'),
                         ),
                         Center(
-                            child: TextButton(onPressed: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>page2()));
-                            }, child: const Text(
-                              "Dashboard",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF8B48DF),
-                              ),
-                            ))),
+                            child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => page2()));
+                                },
+                                child: Text(
+                                  "Dashboard",
+                                  style: TextStyle(
+                                    fontSize: textSizes[buttonTextSize],
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFF8B48DF),
+                                  ),
+                                ))),
                       ],
                     ),
                   ),
@@ -302,7 +360,7 @@ class _MyHomeState extends State<MyHome> {
                   width: 140, // Set the desired width
                   height: 65, // Set the desired height
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: EdgeInsets.all(16),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -310,15 +368,16 @@ class _MyHomeState extends State<MyHome> {
                           child: Image.asset('assets/Tracker.png'),
                         ),
                         Center(
-                            child:TextButton(onPressed:(){} , child: const Text(
-                              "Tracker",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF8B48DF),
-                              ),
-                            ))
-                        ),
+                            child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  "Tracker",
+                                  style: TextStyle(
+                                    fontSize: textSizes[buttonTextSize],
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFF8B48DF),
+                                  ),
+                                ))),
                       ],
                     ),
                   ),
